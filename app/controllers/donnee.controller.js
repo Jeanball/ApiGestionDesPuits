@@ -8,13 +8,13 @@ exports.getDonnees = (req, res) => {
                 message: err.message || "Erreur pendant le fetch des donnees"
             });
         } else {
-            res.send(data);
+            res.json(data);
         }
     })
 }
 
 exports.addDonnee = (req, res) => {
-    console.log(req.body);
+    console.log("Requête du body:", req.body);
     const donneeReqData = new DonneModel(req.body);
 
     if(req.body.volume == null){
@@ -33,15 +33,14 @@ exports.addDonnee = (req, res) => {
         });
     }
     else{
-        console.log("Ok");
         DonneModel.addDonnee(donneeReqData, (err, data) => {
             if (err) {
                 res.status(500).send({
                     message: err.message || "Erreur pendant l'ajout de la donnee"
                 });
             } else {
-                //Envoyer message de succes en json
-                res.status(201).send(data);
+                console.log("ID: " + data.insertId + " --> " + JSON.stringify(donneeReqData));
+                res.status(201).send("Nouvelle ligne entree: " + data.insertId + "\n" + JSON.stringify(donneeReqData));
             }
         })
     }

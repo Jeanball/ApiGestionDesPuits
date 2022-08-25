@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.listen(port, () => {
-    console.log("Le serveur Express écoute sur le port:",port);
+    console.log("Le serveur Express écoute sur le port:", port);
     }
 );
 

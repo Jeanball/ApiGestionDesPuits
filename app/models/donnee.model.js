@@ -27,7 +27,7 @@ Donnee.addDonnee = (newDonnee, result) => {
             console.log("Erreur lors de l'ajout de la donnee: ", err);
             result(err, null);
         } else {
-            console.log('La donnee a été ajoutée avec succès! ', res);
+            console.log('La donnée a été envoyée à la BD avec succès.');
             result(null, res);
         }
     })
