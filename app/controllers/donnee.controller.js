@@ -16,11 +16,23 @@ exports.getDonnees = (req, res) => {
 exports.addDonnee = (req, res) => {
     console.log(req.body);
     const donneeReqData = new DonneModel(req.body);
-    if(req.body.volume == null || req.body.pression == null || req.body.profondeur == null){
+
+    if(req.body.volume == null){
         res.status(400).send({
-            message: "Les champs ne sont pas remplis"
+            message: "Le volume est requis"
         });
-    }else{
+    }
+    else if(req.body.pression == null){
+        res.status(400).send({
+            message: "La pression est requise"
+        });
+    }
+    else if(req.body.profondeur == null){
+        res.status(400).send({
+            message: "La profondeur est requise"
+        });
+    }
+    else{
         console.log("Ok");
         DonneModel.addDonnee(donneeReqData, (err, data) => {
             if (err) {
@@ -28,7 +40,8 @@ exports.addDonnee = (req, res) => {
                     message: err.message || "Erreur pendant l'ajout de la donnee"
                 });
             } else {
-                res.send(data);
+                //Envoyer message de succes en json
+                res.status(201).send(data);
             }
         })
     }
