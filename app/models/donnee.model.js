@@ -4,7 +4,7 @@ var Donnee = function(donnee){
     this.volume = donnee.volume;
     this.pression = donnee.pression; 
     this.profondeur = donnee.profondeur;
-    this.created_at = new Date(); 
+    this.date_creation = new Date(); 
 }
 
 //Get: Toutes les donnees
