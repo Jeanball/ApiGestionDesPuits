@@ -1,19 +1,20 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 
 // const db = mysql.createConnection({
-//     host: 'localhost',
-//     port: 3307,
-//     user: 'admin',
-//     password: '4444',
-//     database: 'puit'
+//     host: process.env.DB_LOCAL_HOST,
+//     port: process.env.DB_LOCAL_PORT,
+//     user: process.env.DB_LOCAL_USER,
+//     password: process.env.DB_LOCAL_PASS,
+//     database: process.env.DB_LOCAL_NAME
 // });
 
 const db = mysql.createConnection({
-    host: 'y6aj3qju8efqj0w1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    port: 3306,
-    user: 'bol4qxgkh2d6994l',
-    password: 'wvxvigxoobmu471u',
-    database: 'ij99rrdgppktzwso'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 db.connect(function(error){
