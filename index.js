@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 //Par pour autoriser les requetes de type application/json
 app.use(bodyParser.json());
+app.use(cors());
 
 app.listen(port, () => {
     console.log("Le serveur Express écoute sur le port:", port);
